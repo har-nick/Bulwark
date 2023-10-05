@@ -15,5 +15,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ComposeMP_Template"
+rootProject.name = "Bulwark"
 include(":shared", ":androidApp")

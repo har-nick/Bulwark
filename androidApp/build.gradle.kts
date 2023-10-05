@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    namespace = "uk.co.harnick.composemptemplate.android"
+    namespace = "uk.co.harnick.bulwark.android"
     compileSdk = 34
     defaultConfig {
-        applicationId = "uk.co.harnick.composemptemplate.android"
+        applicationId = "uk.co.harnick.bulwark"
         minSdk = 21
         targetSdk = 34
         versionCode = 1

@@ -2,7 +2,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
-import uk.co.harnick.composemptemplate.core.App
+import uk.co.harnick.bulwark.core.App
 
 fun main() = application {
     Window(

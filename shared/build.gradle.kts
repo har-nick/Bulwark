@@ -70,7 +70,7 @@ kotlin {
 }
 
 android {
-    namespace = "uk.co.harnick.composemptemplate"
+    namespace = "uk.co.harnick.bulwark"
     compileSdk = 34
     defaultConfig {
         minSdk = 21
@@ -93,7 +93,7 @@ compose {
 sqldelight {
     databases {
         create("LocalStorage") {
-            packageName.set("uk.co.harnick.ComposeMPTemplate")
+            packageName.set("uk.co.harnick.Bulwark")
         }
     }
 }
