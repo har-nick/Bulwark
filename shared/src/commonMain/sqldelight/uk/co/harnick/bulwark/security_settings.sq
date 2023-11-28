@@ -1,0 +1,15 @@
+import uk.co.harnick.bulwark.core.settings.domain.model.security.SecureFlagSetting;
+import uk.co.harnick.bulwark.core.settings.domain.model.security.AppLockSetting;
+
+PRAGMA auto_vacuum = 1;
+
+CREATE TABLE IF NOT EXISTS SecuritySettingsEntity (
+    id INTEGER NOT NULL PRIMARY KEY CHECK (id = 0),
+    isLocked TEXT AS AppLockSetting,
+    secureFlagEnabled INTEGER AS SecureFlagSetting
+);
+
+loadSecuritySettings: SELECT * FROM SecuritySettingsEntity;
+saveSecuritySettings: REPLACE INTO SecuritySettingsEntity VALUES (0, ?, ?);
+
+drop: DELETE FROM SecuritySettingsEntity;

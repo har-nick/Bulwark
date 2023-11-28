@@ -3,7 +3,7 @@ package uk.co.harnick.bulwark.core.db.data.local
 import android.content.Context
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
-import uk.co.harnick.ComposeMPTemplate.LocalStorage
+import uk.co.harnick.bulwark.LocalStorage
 
 actual class DriverFactory(private val appContext: Context) {
     actual fun createDriver(): SqlDriver {

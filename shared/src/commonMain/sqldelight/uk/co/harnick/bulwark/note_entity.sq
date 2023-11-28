@@ -1,0 +1,29 @@
+import kotlin.Boolean;
+import kotlin.Int;
+
+PRAGMA auto_vacuum = 1;
+
+CREATE TABLE IF NOT EXISTS NoteEntity (
+    color INTEGER AS Int,
+    content TEXT NOT NULL,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT DEFAULT 0,
+    isArchived INTEGER AS Boolean NOT NULL DEFAULT 0,
+    isDeleted INTEGER AS Boolean NOT NULL DEFAULT 0,
+    isPinned INTEGER AS Boolean NOT NULL DEFAULT 0,
+--     label INTEGER NOT NULL,
+    timestampCreated INTEGER NOT NULL,
+    timestampLastEdited INTEGER,
+    title TEXT NOT NULL
+);
+
+loadArchivedNotes: SELECT * FROM NoteEntity WHERE isArchived = 1 AND isDeleted = 0;
+loadDeletedNotes: SELECT * FROM NoteEntity WHERE isDeleted = 1;
+loadOpenNotes: SELECT * FROM NoteEntity WHERE isArchived = 0 AND isDeleted = 0;
+
+saveNote: REPLACE INTO NoteEntity
+(color, content, isArchived, isDeleted, isPinned, timestampCreated, timestampLastEdited, title)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteNote: DELETE FROM NoteEntity WHERE id = ?;
+
+drop: DELETE FROM NoteEntity;

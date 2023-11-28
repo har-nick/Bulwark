@@ -1,0 +1,16 @@
+import uk.co.harnick.bulwark.core.settings.domain.model.general.DefaultNoteLayoutSetting;
+import uk.co.harnick.bulwark.core.settings.domain.model.general.LanguageSetting;
+import uk.co.harnick.bulwark.core.settings.domain.model.general.OptimiseImagesSetting;
+
+PRAGMA auto_vacuum = 1;
+
+CREATE TABLE IF NOT EXISTS GeneralSettingsEntity (
+    id INTEGER NOT NULL PRIMARY KEY CHECK (id = 0),
+    language TEXT AS LanguageSetting,
+    default_note_layout TEXT AS DefaultNoteLayoutSetting,
+    optimise_images INTEGER AS OptimiseImagesSetting
+);
+
+load: SELECT * FROM GeneralSettingsEntity;
+save: REPLACE INTO GeneralSettingsEntity VALUES (0, ?, ?, ?);
+drop: DELETE FROM GeneralSettingsEntity;

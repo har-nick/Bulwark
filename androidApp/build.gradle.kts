@@ -1,15 +1,21 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.multiplatform)
+}
+
+dependencies {
+    implementation(project(":shared"))
+    implementation(libs.androidx.compose.activity)
 }
 
 android {
     namespace = "uk.co.harnick.bulwark.android"
-    compileSdk = 34
+    compileSdk = libs.versions.android.sdk.compile.get().toInt()
     defaultConfig {
         applicationId = "uk.co.harnick.bulwark"
-        minSdk = 21
-        targetSdk = 34
+        minSdk = libs.versions.android.sdk.min.get().toInt()
+        targetSdk = libs.versions.android.sdk.compile.get().toInt()
         versionCode = 1
         versionName = "1.0"
     }
@@ -17,11 +23,11 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3"
+        kotlinCompilerExtensionVersion = "1.5.4"
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/{AL2.0,LGPL2.1,versions/9/previous-compilation-data.bin}"
         }
     }
     buildTypes {
@@ -30,17 +36,15 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).majorVersion
     }
 }
 
-dependencies {
-    implementation(project(":shared"))
-    implementation(libs.androidx.compose.activity)
-    implementation(libs.androidx.lifecycle.runtime)
-    implementation(libs.voyager)
+compose {
+    kotlinCompilerPlugin.set(libs.versions.compose.tooling.get())
+    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.21")
 }

@@ -1,3 +1,5 @@
 package uk.co.harnick.bulwark.common.navigation.domain
 
-interface ScreenParams
+import cafe.adriel.voyager.core.lifecycle.JavaSerializable
+
+interface ScreenParams : JavaSerializable

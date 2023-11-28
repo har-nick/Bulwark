@@ -1,0 +1,20 @@
+import uk.co.harnick.bulwark.core.settings.domain.model.display.MaterialYouIshSetting;
+import uk.co.harnick.bulwark.core.settings.domain.model.display.MaterialYouSetting;
+import uk.co.harnick.bulwark.core.settings.domain.model.display.PaletteSetting;
+import uk.co.harnick.bulwark.core.settings.domain.model.display.SeedColorSetting;
+import uk.co.harnick.bulwark.core.settings.domain.model.display.ThemeSetting;
+
+PRAGMA auto_vacuum = 1;
+
+CREATE TABLE IF NOT EXISTS DisplaySettingsEntity (
+    id INTEGER NOT NULL PRIMARY KEY CHECK (id = 0),
+    material_you_ish INTEGER AS MaterialYouIshSetting,
+    material_you INTEGER AS MaterialYouSetting,
+    palette TEXT AS PaletteSetting,
+    seed_color INTEGER AS SeedColorSetting,
+    theme TEXT AS ThemeSetting
+);
+
+load: SELECT * FROM DisplaySettingsEntity;
+save: REPLACE INTO DisplaySettingsEntity VALUES (0, ?, ?, ?, ?, ?);
+drop: DELETE FROM DisplaySettingsEntity;

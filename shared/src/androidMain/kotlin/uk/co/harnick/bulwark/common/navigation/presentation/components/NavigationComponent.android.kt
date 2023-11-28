@@ -6,7 +6,7 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass.Companion
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import uk.co.harnick.bulwark.common.navigation.presentation.components.drawer.NavDrawer
-import uk.co.harnick.composemptemplate.common.navigation.presentation.components.rail.NavRail
+import uk.co.harnick.bulwark.common.navigation.presentation.components.rail.NavRail
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
@@ -14,7 +14,7 @@ actual fun NavigationComponent(content: @Composable () -> Unit) {
     val windowWidth = calculateWindowSizeClass().widthSizeClass
 
     if (windowWidth == Compact) {
-        NavDrawer(content)
+        NavDrawer { content() }
     } else {
         Row {
             NavRail()
