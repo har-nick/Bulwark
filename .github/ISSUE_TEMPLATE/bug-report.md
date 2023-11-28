@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Delete unrelated template content as you see fit.
+about: Create a bug report to help Bulwark improve
 title: ''
 labels: bug
 assignees: har-nick
